@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="PanoramaToHub.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PanoramaToHub"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="350"
+    mc:Ignorable="d">
+
+    <Grid Background="LightGray">
+        <Grid.Resources>
+            <DataTemplate x:Key="HubHeaderTemplate">
+                <StackPanel>
+                    <TextBlock Text="HubHeader" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding SectionHeader}" Style="{StaticResource TitleTextBlockStyle}"/>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="HubSectionTemplate">
+                <StackPanel>
+                    <TextBlock Text="HubSection" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding SectionNumber}" Style="{StaticResource BodyTextBlockStyle}"/>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+
+
+        <Hub local:DynamicHub.DataSource="{Binding HubSections}"
+                local:DynamicHub.SectionTemplate="{StaticResource HubSectionTemplate}"
+                local:DynamicHub.HeaderTemplate="{StaticResource HubHeaderTemplate}">
+        </Hub>
+    </Grid>
+
+</Page>
